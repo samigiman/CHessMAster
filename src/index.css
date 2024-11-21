@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: 'Digital';
+    src: url('https://fonts.cdnfonts.com/css/ds-digital') format('woff2');
+  }
+}
+
+@layer components {
+  .chess-board {
+    @apply bg-[#312e2b] shadow-2xl border border-[#262421];
+  }
+
+  .square-light {
+    @apply bg-[#eeeed2];
+  }
+
+  .square-dark {
+    @apply bg-[#769656];
+  }
+
+  .square-selected {
+    @apply relative;
+  }
+
+  .square-selected::before {
+    content: '';
+    @apply absolute inset-0 bg-[#f6f669] opacity-50 z-10;
+  }
+
+  .valid-move::after {
+    content: '';
+    @apply absolute inset-[35%] bg-black/20 rounded-full z-10;
+  }
+
+  .check-highlight {
+    @apply relative;
+  }
+
+  .check-highlight::before {
+    content: '';
+    @apply absolute inset-0 bg-[#c33] opacity-40 z-10;
+  }
+
+  .piece-hover {
+    @apply transition-transform duration-200 ease-in-out hover:scale-110;
+  }
+}
+
+.font-digital {
+  font-family: 'Digital', monospace;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
